@@ -127,7 +127,7 @@ final class VideoEncoder: NSObject {
                                                                         &naluHeadLen)
         if status == noErr {
             // choice: true means sps. false means pps
-            let paraData = NSData(bytes: &paramSetPtr, length: paraSetSize)
+            let paraData = NSData(bytes: paramSetPtr, length: paraSetSize) // without &
             return paraData
         } else {
             print("CMVideoFormatDescriptionGetH264ParameterSetAtIndex error:\(status)")
